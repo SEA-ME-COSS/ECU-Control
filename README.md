@@ -38,3 +38,16 @@ network:
             nameservers:
                 addresses: [8.8.8.8, 8.8.4.4]
 ```
+
+Auto login
+
+```shell
+sudo systemctl edit getty@tty1.service
+```
+
+```conf
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --noissue --autologin team5 %I $TERM
+Type=simple
+```
