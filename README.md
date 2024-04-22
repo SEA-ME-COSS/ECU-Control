@@ -10,6 +10,6 @@ throttle: `arbitration_id = 1`
 
 **data[0]** = sign (0: Positive, 1: Negative)
 
-**data[1]** = xx.__
+**data[1]** = data (xx.__)
 
-**data[2]** = __.xx
+**data[2]** = data (__.xx)
