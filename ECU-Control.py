@@ -4,11 +4,6 @@ import can
 from piracer.vehicles import PiRacerStandard
 
 
-current_steering_data = multiprocessing.Value('f', 0.0)
-current_throttle_data = multiprocessing.Value('f', 0.0)
-steering_lock = multiprocessing.Lock()
-throttle_lock = multiprocessing.Lock()
-
 bus = can.interface.Bus(channel='can0', bustype='socketcan')
 
 piracer = PiRacerStandard()
@@ -24,6 +19,9 @@ time.sleep(1)
 piracer.set_steering_percent(0.0)
 # -------------------------------------------------- READY SIGN
 
+current_steering_data = 0.0
+current_throttle_data = 0.0
+
 
 def receive_can_data():
     global current_steering_data
@@ -36,27 +34,25 @@ def receive_can_data():
             data *= -1
 
         if message.arbitration_id == 0:
-            with steering_lock:
-                current_steering_data.value = data
+            current_steering_data = data
         if message.arbitration_id == 1:
-            with throttle_lock:
-                current_throttle_data.value = data
+            current_throttle_data = data
 
-        print(current_steering_data.value, current_throttle_data.value)
+        print(current_steering_data, current_throttle_data)
 
 
-def control():
-    global current_steering_data
-    global current_throttle_data
+# def control():
+#     global current_steering_data
+#     global current_throttle_data
 
-    while True:
-        with steering_lock:
-            piracer.set_steering_percent(current_steering_data.value * -0.9)
-        with throttle_lock:
-            piracer.set_throttle_percent(current_steering_data.value * 0.75)
-        time.sleep(0.5)
+#     while True:
+#         with steering_lock:
+#             piracer.set_steering_percent(current_steering_data.value * -0.9)
+#         with throttle_lock:
+#             piracer.set_throttle_percent(current_steering_data.value * 0.75)
+#         time.sleep(0.5)
 
-        print("control")
+#         print("control")
 
 
 receive_process = multiprocessing.Process(target=receive_can_data)
