@@ -42,7 +42,7 @@ def receive_can_data():
             with throttle_lock:
                 current_throttle_data.value = data
 
-        print("receive")
+        print(current_steering_data.value, current_throttle_data.value)
 
 
 def control():
