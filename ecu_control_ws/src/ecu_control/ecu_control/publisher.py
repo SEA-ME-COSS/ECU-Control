@@ -30,9 +30,6 @@ class ControlPublisher(Node):
         self.publisher_.publish(self.control_msg)
         # self.get_logger().info('')
 
-        self.control_msg.angular.z = 0.0
-        self.control_msg.linear.x = 0.0
-
 
 def main(args=None):
     rclpy.init(args=args)
