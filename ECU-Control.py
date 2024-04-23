@@ -60,10 +60,10 @@ def control():
 
 
 receive_process = multiprocessing.Process(target=receive_can_data)
-control_process = multiprocessing.Process(target=control)
+# control_process = multiprocessing.Process(target=control)
 
 receive_process.start()
-control_process.start()
+# control_process.start()
 
 receive_process.join()
-control_process.join()
+# control_process.join()
