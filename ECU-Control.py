@@ -46,11 +46,11 @@ def control():
 
     while True:
         with lock:
-            piracer.set_steering_percent(current_steering_data.value * -0.9)
+            # piracer.set_steering_percent(current_steering_data.value * -0.9)
             # piracer.set_throttle_percent(current_throttle_data * 0.75)
             time.sleep(0.5)
 
-            print("control")
+            print(current_steering_data.value)
 
 
 receive_process = multiprocessing.Process(target=receive_can_data)
