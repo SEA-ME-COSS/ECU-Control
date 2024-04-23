@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'ecu_control = ecu_control.ecu_control:main',
+            'publisher = ecu_control.publisher:main',
         ],
     },
 )

@@ -10,7 +10,7 @@ class ControlPublisher(Node):
     def __init__(self):
         super().__init__('control_publisher_node')
         self.publisher_ = self.create_publisher(Twist, '/control_data', 10)
-        self.timer_ = self.create_timer(0.1, self.callback)  # [s]
+        self.timer_ = self.create_timer(0.001, self.callback)  # [s]
 
         self.control_msg = Twist()
 
