@@ -38,28 +38,24 @@ def receive_can_data():
         if message.arbitration_id == 1:
             current_throttle_data = data
 
-        print(current_steering_data, current_throttle_data)
 
+def control():
+    global current_steering_data
+    global current_throttle_data
 
-# def control():
-#     global current_steering_data
-#     global current_throttle_data
+    while True:
+        piracer.set_steering_percent(current_steering_data * -0.9)
+        piracer.set_throttle_percent(current_throttle_data * 0.75)
+        time.sleep(0.5)
 
-#     while True:
-#         with steering_lock:
-#             piracer.set_steering_percent(current_steering_data.value * -0.9)
-#         with throttle_lock:
-#             piracer.set_throttle_percent(current_steering_data.value * 0.75)
-#         time.sleep(0.5)
-
-#         print("control")
+        print("control")
 
 
 receive_process = multiprocessing.Process(target=receive_can_data)
-# control_process = multiprocessing.Process(target=control)
+control_process = multiprocessing.Process(target=control)
 
 receive_process.start()
-# control_process.start()
+control_process.start()
 
 receive_process.join()
-# control_process.join()
+control_process.join()
