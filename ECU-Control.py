@@ -42,6 +42,8 @@ def receive_can_data():
             with throttle_lock:
                 current_throttle_data.value = data
 
+        print("receive")
+
 
 def control():
     global current_steering_data
@@ -53,6 +55,8 @@ def control():
         with throttle_lock:
             piracer.set_throttle_percent(current_steering_data.value * 0.75)
         time.sleep(0.5)
+
+        print("control")
 
 
 receive_process = multiprocessing.Process(target=receive_can_data)
