@@ -48,7 +48,7 @@ def control():
     while True:
         with lock:
             piracer.set_steering_percent(current_steering_data.value * -0.9)
-            piracer.set_throttle_percent(current_throttle_data * 0.75)
+            piracer.set_throttle_percent(current_throttle_data.value * 0.75)
 
             print(current_steering_data.value)
 
