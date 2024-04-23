@@ -43,56 +43,23 @@ def receive_can_data():
                 current_throttle_data.value = data
 
 
-def print_value():
+def control():
     global current_steering_data
     global current_throttle_data
 
     while True:
         with steering_lock:
-            print("steering:", current_steering_data.value)
+            piracer.set_steering_percent(current_steering_data.value * -0.9)
         with throttle_lock:
-            print("throttle:", current_throttle_data.value)
-        time.sleep(3)
+            piracer.set_throttle_percent(current_steering_data.value * 0.75)
+        time.sleep(0.5)
 
 
-store_process = multiprocessing.Process(target=receive_can_data)
-print_process = multiprocessing.Process(target=print_value)
+receive_process = multiprocessing.Process(target=receive_can_data)
+control_process = multiprocessing.Process(target=control)
 
-store_process.start()
-print_process.start()
+receive_process.start()
+control_process.start()
 
-store_process.join()
-print_process.join()
-
-
-# ==========================
-
-
-
-
-
-# def process_can_message(msg):
-#     global current_steering
-#     global current_throttle
-
-#     data = msg.data[1] + msg.data[2] * 0.01
-#     if msg.data[0] == 1:
-#         data *= -1
-
-#     if msg.arbitration_id == 0:
-#         current_steering = round(data * -0.9, 2)
-#         print("steering:", current_steering)
-
-#     if msg.arbitration_id == 1:
-#         current_throttle = round(data * 0.75, 2)
-#         print("throttle:", current_throttle)
-
-
-# bus = can.interface.Bus(channel='can0', bustype='socketcan')
-# notifier = can.Notifier(bus, [process_can_message])
-
-# while True:
-#     piracer.set_steering_percent(current_steering)
-#     piracer.set_throttle_percent(current_throttle)
-
-#     time.sleep(0.5)
+receive_process.join()
+control_process.join()
