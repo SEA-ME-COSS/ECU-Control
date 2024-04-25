@@ -35,9 +35,9 @@ int open_port(const char *port) {
     }
 
     // Set a CAN filter to receive specific messages
-    rfilter[0].can_id   = 0x000;
+    rfilter[0].can_id   = 0x0F6;
     rfilter[0].can_mask = CAN_SFF_MASK;
-    rfilter[1].can_id   = 0x001;
+    rfilter[1].can_id   = 0x0F7;
     rfilter[1].can_mask = CAN_SFF_MASK;
     if (setsockopt(soc, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter)) < 0) {
         printf("Error setting CAN filter!");
@@ -69,13 +69,13 @@ void read_port() {
                 printf("Error");
                 printf("%d", frame.can_id);
 
-                if (frame.can_id == 0x000) {
+                if (frame.can_id == 0x0F6) {
                     printf("aaaaa");
                     pthread_mutex_lock(&SteeringBufferMutex);
                     SteeringBuffer = data;
                     pthread_mutex_unlock(&SteeringBufferMutex);
                 }
-                if (frame.can_id == 0x001) {           
+                if (frame.can_id == 0x0F7) {           
                     printf("bbbbb");         
                     pthread_mutex_lock(&ThrottleBufferMutex);
                     ThrottleBuffer = data;
