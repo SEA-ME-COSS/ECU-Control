@@ -59,6 +59,8 @@ void read_port() {
     if (select((soc + 1), &readSet, NULL, NULL, &timeout) >= 0) {
         if (FD_ISSET(soc, &readSet)) {
             recvbytes = read(soc, &frame, sizeof(struct can_frame));
+            
+            printf("Error");
     
             if (recvbytes) {
                 float data = frame.data[1] + frame.data[2] * 0.01;
