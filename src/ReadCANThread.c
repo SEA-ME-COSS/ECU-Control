@@ -59,8 +59,6 @@ void read_port() {
     if (select((soc + 1), &readSet, NULL, NULL, &timeout) >= 0) {
         if (FD_ISSET(soc, &readSet)) {
             recvbytes = read(soc, &frame, sizeof(struct can_frame));
-            
-            printf("Error");
     
             if (recvbytes) {
                 float data = frame.data[1] + frame.data[2] * 0.01;
@@ -68,12 +66,16 @@ void read_port() {
                     data *= -1;
                 }
 
+                printf("Error");
+
                 if (frame.can_id == 0x00) {
+                    printf("aaaaa");
                     pthread_mutex_lock(&SteeringBufferMutex);
                     SteeringBuffer = data;
                     pthread_mutex_unlock(&SteeringBufferMutex);
                 }
-                if (frame.can_id == 0x01) {                    
+                if (frame.can_id == 0x01) {           
+                    printf("bbbbb");         
                     pthread_mutex_lock(&ThrottleBufferMutex);
                     ThrottleBuffer = data;
                     pthread_mutex_unlock(&ThrottleBufferMutex);
