@@ -67,6 +67,7 @@ void read_port() {
                 }
 
                 printf("Error");
+                printf("%d", frame.can_id);
 
                 if (frame.can_id == 0x000) {
                     printf("aaaaa");
