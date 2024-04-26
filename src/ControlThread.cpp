@@ -25,7 +25,7 @@ void PiracerClass::applySteering(float steering)
 
 void PiracerClass::applyThrottle(float throttle)
 {
-    PyObject_CallMethod(pInstance, "set_throttle_percent", "(f)", throttle * 0.5);
+    PyObject_CallMethod(pInstance, "set_throttle_percent", "(f)", throttle * 0.3);
 
     return;
 }
