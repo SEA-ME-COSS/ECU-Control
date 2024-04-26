@@ -39,11 +39,13 @@ void *ControlThread(void *arg)
         // Read steering data from steering buffer
         pthread_mutex_lock(&SteeringBufferMutex);
         std::cout<<"steering: "<<SteeringBuffer<<std::endl;
+        piracer.applySteering(SteeringBuffer);
         pthread_mutex_unlock(&SteeringBufferMutex);
         
         // Read throttle data from throttle buffer
         pthread_mutex_lock(&ThrottleBufferMutex);
         std::cout<<"throttle: "<<ThrottleBuffer<<std::endl;
+        piracer.applyThrottle(ThrottleBuffer);
         pthread_mutex_unlock(&ThrottleBufferMutex);
         
         usleep(1000000);  // Sleep for 300 ms
