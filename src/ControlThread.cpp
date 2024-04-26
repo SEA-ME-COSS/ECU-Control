@@ -14,7 +14,7 @@ void *ControlThread(void *arg)
         std::cout<<"throttle: "<<ThrottleBuffer<<std::endl;
         pthread_mutex_unlock(&ThrottleBufferMutex);
         
-        usleep(3000000);  // Sleep for 300 ms
+        usleep(1000000);  // Sleep for 300 ms
     }
     
     return NULL;
