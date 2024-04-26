@@ -69,13 +69,13 @@ void read_port() {
                 printf("10: %d\n", frame.can_id);
                 printf("16: %x\n", frame.can_id);
 
-                if (frame.can_id == 0x0F6) {
+                if (frame.can_id == 0x00) {
                     printf("aaaaa");
                     pthread_mutex_lock(&SteeringBufferMutex);
                     SteeringBuffer = data;
                     pthread_mutex_unlock(&SteeringBufferMutex);
                 }
-                if (frame.can_id == 0x0F7) {           
+                if (frame.can_id == 0x01) {           
                     printf("bbbbb");         
                     pthread_mutex_lock(&ThrottleBufferMutex);
                     ThrottleBuffer = data;
