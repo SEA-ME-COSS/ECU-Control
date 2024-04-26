@@ -66,8 +66,7 @@ void read_port() {
                     data *= -1;
                 }
 
-                printf("%f", data);
-                // printf("%d", frame.can_id);
+                printf("%x", frame.can_id);
 
                 if (frame.can_id == 0x0F6) {
                     printf("aaaaa");

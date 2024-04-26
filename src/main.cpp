@@ -9,7 +9,7 @@ int main ()
     pthread_create(&controlThread, NULL, ControlThread, NULL);
 
     pthread_join(readCANThread, NULL);
-    pthread_join(controlThread, NULL);
+    // pthread_join(controlThread, NULL);
 
     return 0;
 }
