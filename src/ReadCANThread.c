@@ -35,9 +35,9 @@ int open_port(const char *port) {
     }
 
     // Set a CAN filter to receive specific messages
-    rfilter[0].can_id   = 0x00;
+    rfilter[0].can_id   = 0x00 + 0x80000000;
     rfilter[0].can_mask = CAN_SFF_MASK;
-    rfilter[1].can_id   = 0x01;
+    rfilter[1].can_id   = 0x01 + 0x80000000;
     rfilter[1].can_mask = CAN_SFF_MASK;
     if (setsockopt(soc, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter)) < 0) {
         printf("Error setting CAN filter!");
