@@ -51,11 +51,3 @@ ExecStart=
 ExecStart=-/sbin/agetty --noissue --autologin team5 %I $TERM
 Type=simple
 ```
-
-Disable machine-to-machine topic communication.
-
-```shell
-sudo nano .bashrc
-
-export ROS_LOCALHOST_ONLY=1
-```
