@@ -1,0 +1,7 @@
+sudo apt install can-utils
+
+pip install python-can
+
+pip install cantools
+
+https://github.com/xR3b0rn/dbcppp/tree/master
