@@ -34,8 +34,10 @@ BS_:
 
 BU_: PCM
 
-BO_ 255 SpeedMessage: 8 PCM
- SG_ Speed : 0|16@0+ (1,0) [0|65535] ""  PCM
+BO_ 255 SpeedMessage1: 8 PCM
+ SG_ Speed : 0|16@1+ (1,0) [0|65535] "" PCM
 
-CM_ "Example DBC file for SpeedMessage.";
+BO_ 254 SpeedMessage2: 8 PCM
+ SG_ Speed : 0|16@1+ (1,0) [0|65535] "" PCM
 
+CM_ "Example DBC file with two messages using the same data structure but different IDs.";

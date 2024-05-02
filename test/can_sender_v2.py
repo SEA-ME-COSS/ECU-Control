@@ -10,7 +10,7 @@ bus = can.interface.Bus(channel='vcan0', bustype='socketcan')
 
 def send_speed_message(speed):
     # DBC에서 메시지 찾기
-    message = db.get_message_by_name('SpeedMessage1')
+    message = db.get_message_by_name('SpeedMessage2')
 
     # 데이터 인코딩
     data = message.encode({'Speed': speed})
@@ -22,6 +22,6 @@ def send_speed_message(speed):
 
 if __name__ == "__main__":
     while True:
-        send_speed_message(10)  # Speed 값을 10으로 설정
+        send_speed_message(20)  # Speed 값을 10으로 설정
         time.sleep(1)  # 1초마다 메시지 전송
 
