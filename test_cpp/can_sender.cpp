@@ -56,8 +56,8 @@ int main() {
         for (const auto& sig : msg.Signals()) {
             if (sig.Name() == "Speed") {
                 double value = 10; // Set Speed to 10
-                uint64_t encoded_value = sig.Encode(sig.PhysToRaw(value));
-                sig.EncodeSignal(frame_data.data(), encoded_value);
+                auto raw_value = sig.PhysToRaw(value);
+                sig.Encode(raw_value, frame_data.data());
             }
         }
 
