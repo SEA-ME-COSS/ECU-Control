@@ -16,7 +16,7 @@ try:
         if message.arbitration_id == 0:
             piracer.set_steering_percent(data * -0.9)
         if message.arbitration_id == 1:
-            piracer.set_throttle_percent(data * 0.75)
+            piracer.set_throttle_percent(data * 0.4)
 
 except KeyboardInterrupt:
     bus.shutdown()
