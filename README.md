@@ -4,9 +4,9 @@ Independent RaspberryPi based ECU for the control of PiRacer.
 
 ## Convention for CAN Frame
 
-steering: `arbitration_id = 0`
+steering: `arbitration_id = 0x00`
 
-throttle: `arbitration_id = 1`
+throttle: `arbitration_id = 0x01`
 
 **data[0]** = sign (0: Positive, 1: Negative)
 
