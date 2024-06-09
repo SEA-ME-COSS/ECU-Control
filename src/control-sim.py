@@ -14,7 +14,7 @@ try:
             data *= -1
 
         if message.arbitration_id == 0:
-            piracer.set_steering_percent(data * -1.9)
+            piracer.set_steering_percent(data * -3.0)
         if message.arbitration_id == 1:
             piracer.set_throttle_percent(data * 0.9)
 
