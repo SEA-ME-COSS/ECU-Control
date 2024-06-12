@@ -1,83 +1,59 @@
 # About
 
-Independent RaspberryPi based ECU for the control of PiRacer
+[DIAGRAM HERE]
 
-Convention for CAN Frame
-
-steering: `arbitration_id = 0x00`
-
-throttle: `arbitration_id = 0x01`
-
-**data[0]** = sign (0: Positive, 1: Negative)
-
-**data[1]** = data (xx.__)
-
-**data[2]** = data (__.xx)
-
+This repository is for the control ECU part of the [Autonomous-Driving-System](https://github.com/SEA-ME-COSS/Autonomous-Driving-System) project. The control ECU is based on an independent RaspberryPi board and controls a physical PiRacer model vehicle. It controls the throttle and steering of the PiRacer using data received via CAN communication from the [main ECU](https://github.com/SEA-ME-COSS/ECU-Main).
 
 # Requirements
 
+- **Ubuntu 20.04**
 
-| **Local**        | [pygame](https://pypi.org/project/pygame/)                                         | Keyboard input for control |
-| **Raspberry Pi** | [piracer](https://github.com/twyleg/piracer_py)                                    | Physical PiRacer control   |
+    Install Ubuntu 20.04 for RaspberryPi using RaspberryPi OS Imager.
 
-- Ubuntu 20.04
-- [ROS2 foxy](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html)
-- matplotlib & numpy
-    
+- **CAN HAT setup**
+
+    Follow the instruction of [2-CH CAN FD HAT setup](https://www.waveshare.com/wiki/2-CH_CAN_FD_HAT) and enable `Single SPI Mode`
+
+- **Python packages**
+
     ```bash
-    pip install numpy
-    pip install matplotlib
-    ```
-    
-- Eigen
-    
-    ```bash
-    sudo apt update	
-    sudo apt install libeigen3-dev
-    ```
-    
-- Ceres
-    
-    ```bash
-    sudo apt update
-    sudo apt install libeigen3-dev libgoogle-glog-dev libgflags-dev
-    sudo apt install libceres-dev
-    ```
-    
-- ompl
-    
-    ```bash
-    sudo apt install libompl-dev
+    pip install piracer-py
+    pip install python-can
+    pip install pygame
     ```
 
 # Usage
 
-```shell
-./
- ├── simulation_ws/src/
- │   └── sim        # Description and launch file for PiRacer model
- │
- └── teleoperation_ws/src/
-     └── teleop     # Remote control example including a controller and a receiver
+```bash
+# ECU-Control
+sh can_setup.sh
+python3 src/control.py
 ```
 
-### 3. Run Teleoperation Controller
+(Optional) You can check the CAN communication using test controller.
 
 ```bash
-# Local
-cd teleoperation_ws
-
-source install/local_setup.bash
-ros2 run teleop controller
+# ECU-Main
+sh can_setup.sh
+python3 src/test_controller.py
 ```
 
-When you run the controller, a small pygame window like the following will appear.
+When you run the controller, a small pygame window like the following will appear. Click on this window and press the WASD keys on the keyboard to operate PiRacer.
 
 <div width="100%" align="center"><img src="/images/controller.png" align="center" width="30%"></div>
 
-Click on this window and press the WASD keys on the keyboard. Observe the movement of both Gazebo PiRacer and physical PiRacer.
+# Note
 
+Context of CAN communication
+
+| Message        | Purpose            | Arbitration ID |
+|----------------|--------------------|----------------|
+| steering       | Control            | 0x00           |
+| throttle       | Control            | 0x01           |
+| x position     | GPS                | 0x02           |
+| y position     | GPS                | 0x03           |
+| orientation    | GPS                | 0x04           |
+| headunit start | Autonomous driving | 0x05           |
 
 # Reference
 - [Waveshare PiRacer](https://www.waveshare.com/wiki/PiRacer_AI_Kit)
