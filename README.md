@@ -2,7 +2,7 @@
 
 [DIAGRAM HERE]
 
-This repository is for the control ECU part of the [Autonomous-Driving-System](https://github.com/SEA-ME-COSS/Autonomous-Driving-System) project. The control ECU is based on an independent RaspberryPi board and controls a physical PiRacer model vehicle. It controls the throttle and steering of the PiRacer using data received via CAN communication from the [main ECU](https://github.com/SEA-ME-COSS/ECU-Main).
+This repository is for the control ECU part of the [Autonomous-Driving-System](https://github.com/SEA-ME-COSS/Autonomous-Driving-System) project. The control ECU is based on an independent RaspberryPi board and operates a physical PiRacer model vehicle. It controls the throttle and steering of the PiRacer using data received via CAN communication from the [main ECU](https://github.com/SEA-ME-COSS/ECU-Main).
 
 # Requirements
 
