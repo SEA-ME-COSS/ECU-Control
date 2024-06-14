@@ -2,7 +2,7 @@
 
 [DIAGRAM HERE]
 
-This repository is for the control ECU part of the [Autonomous-Driving-System](https://github.com/SEA-ME-COSS/Autonomous-Driving-System) project. The control ECU is based on an independent RaspberryPi board and operates a physical PiRacer model vehicle. It controls the throttle and steering of the PiRacer using data received via CAN communication from the [main ECU](https://github.com/SEA-ME-COSS/ECU-Main).
+This repository is for the **ECU-Control** part of the [Autonomous-Driving-System](https://github.com/SEA-ME-COSS/Autonomous-Driving-System) project. The ECU-Control is based on an independent RaspberryPi board and operates a physical PiRacer model vehicle. It controls the throttle and steering of the PiRacer using data received via CAN communication from the [ECU-Core](https://github.com/SEA-ME-COSS/ECU-Core).
 
 # Requirements
 
@@ -12,7 +12,7 @@ This repository is for the control ECU part of the [Autonomous-Driving-System](h
 
 - **CAN HAT setup**
 
-    Follow the instruction of [2-CH CAN FD HAT setup](https://www.waveshare.com/wiki/2-CH_CAN_FD_HAT) and enable `Single SPI Mode`
+    Follow the instruction of [2-CH CAN FD HAT setup](https://www.waveshare.com/wiki/2-CH_CAN_FD_HAT) and enable **Single SPI Mode**
 
 - **Python packages**
 
@@ -25,7 +25,7 @@ This repository is for the control ECU part of the [Autonomous-Driving-System](h
 # Usage
 
 ```bash
-# ECU-Control
+# Execute on the ECU-Control
 sh can_setup.sh
 python3 src/control.py
 ```
@@ -33,7 +33,7 @@ python3 src/control.py
 (Optional) You can check the CAN communication using test controller.
 
 ```bash
-# ECU-Main
+# Execute on the ECU-Core
 sh can_setup.sh
 python3 src/test_controller.py
 ```
@@ -46,14 +46,14 @@ When you run the controller, a small pygame window like the following will appea
 
 Context of CAN communication
 
-| Message        | Purpose            | Arbitration ID |
-|----------------|--------------------|----------------|
-| steering       | Control            | 0x00           |
-| throttle       | Control            | 0x01           |
-| x position     | GPS                | 0x02           |
-| y position     | GPS                | 0x03           |
-| orientation    | GPS                | 0x04           |
-| headunit start | Autonomous driving | 0x05           |
+| Message            | Purpose                | Arbitration ID |
+|--------------------|------------------------|----------------|
+| **steering**       | **Control**            | **0x00**       |
+| **throttle**       | **Control**            | **0x01**       |
+| x position         | GPS                    | 0x02           |
+| y position         | GPS                    | 0x03           |
+| orientation        | GPS                    | 0x04           |
+| headunit start     | Autonomous driving     | 0x05           |
 
 # Reference
 - [Waveshare PiRacer](https://www.waveshare.com/wiki/PiRacer_AI_Kit)
