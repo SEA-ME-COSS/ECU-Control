@@ -12,7 +12,7 @@ This repository is for the **ECU-Control** part of the [Autonomous-Driving-Syste
 
 - **CAN HAT setup**
 
-    Follow the instruction of [2-CH CAN FD HAT setup](https://www.waveshare.com/wiki/2-CH_CAN_FD_HAT) and enable **Single SPI Mode**
+    Follow the instruction of [2-CH CAN FD HAT setup](https://www.waveshare.com/wiki/2-CH_CAN_FD_HAT) and enable **Single SPI Mode**.
 
 - **Python packages**
 
