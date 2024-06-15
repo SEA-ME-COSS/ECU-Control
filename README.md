@@ -38,9 +38,7 @@ sh can_setup.sh
 python3 src/test_controller.py
 ```
 
-When you run the controller, a small pygame window like the following will appear. Click on this window and press the WASD keys on the keyboard to operate PiRacer.
-
-<div width="100%" align="center"><img src="/images/controller.png" align="center" width="30%"></div>
+When you run the controller, a small pygame window will appear. Click on it and press the WASD keys on the keyboard to operate PiRacer.
 
 # Note
 
