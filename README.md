@@ -30,7 +30,7 @@ sh can_setup.sh
 python3 src/control.py
 ```
 
-(Optional) You can check the CAN communication using test controller.
+(Optional) You can check the CAN communication using keyboard controller.
 
 ```bash
 # Execute on the ECU-Core
