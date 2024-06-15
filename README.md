@@ -35,7 +35,7 @@ python3 src/control.py
 ```bash
 # Execute on the ECU-Core
 sh can_setup.sh
-python3 src/test_controller.py
+python3 src/keyboard_controller.py
 ```
 
 When you run the controller, a small pygame window will appear. Click on it and press the WASD keys on the keyboard to operate PiRacer.
