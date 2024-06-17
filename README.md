@@ -1,6 +1,6 @@
 # About
 
-<img src=/images/Architecture_ECU-Core.png alt="Architecture_ECU-Core" width="100%" height="100%"/>
+<img src=/images/Architecture_ECU-Control.png alt="Architecture_ECU-Control" width="100%" height="100%"/>
 
 This repository is for the **ECU-Control** part of the [Autonomous-Driving-System](https://github.com/SEA-ME-COSS/Autonomous-Driving-System) project. The ECU-Control is based on an independent RaspberryPi board and operates a physical PiRacer model vehicle. It controls the throttle and steering of the PiRacer using data received via CAN communication from the [ECU-Core](https://github.com/SEA-ME-COSS/ECU-Core).
 
